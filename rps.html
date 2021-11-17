@@ -8,7 +8,56 @@
 </head>
 <body>
 	<script>
-		console.log("Hello, world");
+		// computerPlay will randomly return "rock", "papper" or "scissors
+
+		function computerPlay() {
+			let randomNum = Math.floor(Math.random() * 3);
+			switch (randomNum) {
+				case 0: 
+					return 'Rock'
+				case 1: 
+					return 'Paper'
+				case 2: 
+					return 'Scissors'
+				break;
+			}
+		}
+
+		function playRound(playerSelection, computerSelection) {
+			if (playerSelection === computerSelection) {
+				roundWinner = 'Tie'
+			}
+			if (
+				(playerSelection == 'Rock' && computerSelection === 'Scissors') ||
+				(playerSelection === 'Scissors' && computerSelection === 'Paper') ||
+				(playerSelection === 'Paper' && computerSelection === 'Rock')
+				) {
+				roundWinner = 'Player'
+				}
+			if (
+				(computerSelection === 'Rock' && playerSelection === 'Scissors') ||
+				(computerSelection === 'Scissors' && playerSelection === 'Paper') ||
+				(computerSelection === 'Paper' && playerSelection === 'Rock')
+				) {
+				roundWinner = 'Computer'
+				}
+		}
+
+		const playerSelection = 'Rock';
+		const computerSelection = computerPlay();
+
+		function updateScore() {
+ 			 if (roundWinner === 'tie') {
+    			console.log("Tie!")
+  			} else if (roundWinner === 'player') {
+    			console.log('You won!')
+  			} else if (roundWinner === 'computer') {
+    			console.log('You lost, idiot.')
+			  }
+		}
+
+
+
 	</script>
 	
 </body>
