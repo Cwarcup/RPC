@@ -4,59 +4,69 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Rock Papper Scissors Game - Odin</title>
+	<title>rock Papper scissors Game - Odin</title>
 </head>
 <body>
 	<script>
 		// computerPlay will randomly return "rock", "papper" or "scissors
 
+		// returns a random answer from each case
+
 		function computerPlay() {
 			let randomNum = Math.floor(Math.random() * 3);
 			switch (randomNum) {
 				case 0: 
-					return 'Rock'
+					return 'rock'
 				case 1: 
-					return 'Paper'
+					return 'paper'
 				case 2: 
-					return 'Scissors'
+					return 'scissors'
 				break;
 			}
 		}
 
-		function playRound(playerSelection, computerSelection) {
-			if (playerSelection === computerSelection) {
-				roundWinner = 'Tie'
-			}
-			if (
-				(playerSelection == 'Rock' && computerSelection === 'Scissors') ||
-				(playerSelection === 'Scissors' && computerSelection === 'Paper') ||
-				(playerSelection === 'Paper' && computerSelection === 'Rock')
-				) {
-				roundWinner = 'Player'
-				}
-			if (
-				(computerSelection === 'Rock' && playerSelection === 'Scissors') ||
-				(computerSelection === 'Scissors' && playerSelection === 'Paper') ||
-				(computerSelection === 'Paper' && playerSelection === 'Rock')
-				) {
-				roundWinner = 'Computer'
-				}
-		}
+		function game() {
+			const games = 5; //play 5 rounds of the game
+			let playerPoints = 0; //player starts with 0 points
+			let compPoints = 0; // computer starts with 0 points
 
-		const playerSelection = 'Rock';
-		const computerSelection = computerPlay();
+			let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); //player selects a variable and is converted to lowercase. 
+			
+			let computerSelection = computerPlay(); //computer selection
 
-		function updateScore() {
- 			 if (roundWinner === 'tie') {
-    			console.log("Tie!")
-  			} else if (roundWinner === 'player') {
-    			console.log('You won!')
-  			} else if (roundWinner === 'computer') {
-    			console.log('You lost, idiot.')
+			function playRound(playerSelection, computerSelection) {
+				if (playerSelection === computerSelection) {
+					return roundWinner = 'Tie'
+				}
+				else if (
+					(playerSelection === 'rock' && computerSelection === 'scissors') ||
+					(playerSelection === 'scissors' && computerSelection === 'paper') ||
+					(playerSelection === 'paper' && computerSelection === 'rock')
+					) {
+					return roundWinner = 'Player'
+					}
+				else if (
+					(computerSelection === 'rock' && playerSelection === 'scissors') ||
+					(computerSelection === 'scissors' && playerSelection === 'paper') ||
+					(computerSelection === 'paper' && playerSelection === 'rock')
+					) {
+					return roundWinner = 'Computer'
+					}
+				}
+		
+			function updateScore() {
+ 			 if (roundWinner === 'Tie') {
+    			return console.log("Tie!")
+  			} else if (roundWinner === 'Player') {
+    			return console.log('You won!')
+  			} else if (roundWinner === 'Computer') {
+    			return console.log('You lost, idiot.')
 			  }
+			}
 		}
 
 
+		
 
 	</script>
 	
