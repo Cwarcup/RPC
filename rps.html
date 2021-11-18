@@ -8,9 +8,13 @@
 </head>
 <body>
 	<script>
-		// computerPlay will randomly return "rock", "papper" or "scissors
 
-		// returns a random answer from each case
+		const playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); //player selects a variable and is converted to lowercase. 
+		const computerSelection = computerPlay(); //computer selection
+
+		let compScore = 0;
+		let playerScore = 0;
+		let roundWinner = ''
 
 		function computerPlay() {
 			let randomNum = Math.floor(Math.random() * 3);
@@ -25,62 +29,47 @@
 			}
 		}
 
-		function game() {
-			const games = 5; //play 5 rounds of the game
-			let playerPoints = 0; //player starts with 0 points
-			let compPoints = 0; // computer starts with 0 points
+		function playRound() {
+			const playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); //player selects a variable and is converted to lowercase. 
+			const computerSelection = computerPlay(); //computer selection
 
-			let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); //player selects a variable and is converted to lowercase. 
-			
-			let computerSelection = computerPlay(); //computer selection
-
-			function playRound(playerSelection, computerSelection) {
-				if (playerSelection === computerSelection) {
-					return roundWinner = 'Tie'
-				}
-				else if (
-					(playerSelection === 'rock' && computerSelection === 'scissors') ||
-					(playerSelection === 'scissors' && computerSelection === 'paper') ||
-					(playerSelection === 'paper' && computerSelection === 'rock')
-					) {
-					return roundWinner = 'Player'
-					}
-				else if (
-					(computerSelection === 'rock' && playerSelection === 'scissors') ||
-					(computerSelection === 'scissors' && playerSelection === 'paper') ||
-					(computerSelection === 'paper' && playerSelection === 'rock')
-					) {
-					return roundWinner = 'Computer'
-					}
-				}
+			if (playerSelection === computerSelection) {
+				roundWinner = 'Tie'
 			}
+			else if (
+				(playerSelection === 'rock' && computerSelection === 'scissors') ||
+				(playerSelection === 'scissors' && computerSelection === 'paper') ||
+				(playerSelection === 'paper' && computerSelection === 'rock') 
+				) {
+				roundWinner = 'Player';
+				playerScore++;
 
-			// -- Have confirmd that code below works. Need to input playSelection, then runn the playRound
+				if (playerScore == 5) {
+					return `Game is Over. Player score is ${playerScore}. Computer score is ${compScore}.`;
+					}
+				}
+			else if (
+				(computerSelection === 'rock' && playerSelection === 'scissors') ||
+				(computerSelection === 'scissors' && playerSelection === 'paper') ||
+				(computerSelection === 'paper' && playerSelection === 'rock')
+				) {
+				roundWinner = 'Computer';
+				compScore++;
+				if (compScore == 5) {
+					return `Game is Over. Player score is ${playerScore}. Computer score is ${compScore}.`;
+					}
+				}
+			else (
+				alert('Unexpected value used. Please try again. ')
+			)
 
-			// let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); //player selects a variable and is converted to lowercase. 
-			
-			// let computerSelection = computerPlay(); //computer selection
-			
-			// function playRound(playerSelection, computerSelection) {
-			// 	if (playerSelection === computerSelection) {
-			// 		return roundWinner = 'Tie'
-			// 	}
-			// 	else if (
-			// 		(playerSelection === 'rock' && computerSelection === 'scissors') ||
-			// 		(playerSelection === 'scissors' && computerSelection === 'paper') ||
-			// 		(playerSelection === 'paper' && computerSelection === 'rock')
-			// 		) {
-			// 		return roundWinner = 'Player'
-			// 		}
-			// 	else if (
-			// 		(computerSelection === 'rock' && playerSelection === 'scissors') ||
-			// 		(computerSelection === 'scissors' && playerSelection === 'paper') ||
-			// 		(computerSelection === 'paper' && playerSelection === 'rock')
-			// 		) {
-			// 		return roundWinner = 'Computer'
-			// 		}
-			// 	}
+		}
 		
+
+		function gameOver() {
+			playerScore === 5 || compScore === 5;
+			return `Game is Over. Player score is ${playerScore}. Computer score is ${compScore}.`;
+		}
 
 	</script>
 	
