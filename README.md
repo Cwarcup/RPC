@@ -1,2 +1,3 @@
 # RPC
- Rock Papper Scissors game.
+ Rock Paper Scissors game.
+
