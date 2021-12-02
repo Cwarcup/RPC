@@ -13,11 +13,13 @@
 		<button class="btn" id='scissors'>"Scissors"</button>
 	</div>
 
-	<div id="player-score"></div>
+	<div id="player-score">Player Score:</div>
 	
-	<div id="computer-score"></div>
+	<div id="computer-score">Computer Score:</div>
 
 	<div id="message"></div>
+
+	<div id="game-winner"></div>
 	
 	
 
@@ -40,6 +42,8 @@
 		const computerScoreBoard = document.querySelector('#computer-score');
 		const message = document.querySelector('#message');
 
+		const gameWinner = document.querySelector('#game-winner');
+
 		//function to add a div to the container everytime the round is played. 
 	
 
@@ -48,28 +52,18 @@
 			const playerSelection = 'rock';
 			const computerSelection = computerPlay();
 			playRound(playerSelection, computerSelection);
-			playerScoreBoard.textContent = `Player = ${playerScore}`;
-			computerScoreBoard.textContent = `Computer = ${compScore}`;
-			message.textContent = `${roundWinner}`;
-	
 		})
 
 		paperBtn.addEventListener('click', () => {
 			const playerSelection = 'paper';
 			const computerSelection = computerPlay();
 			playRound(playerSelection, computerSelection);
-			playerScoreBoard.textContent = `Player = ${playerScore}`;
-			computerScoreBoard.textContent = `Computer = ${compScore}`;
-			message.textContent = `${roundWinner}`;
 		})
 
 		scissorBtn.addEventListener('click', () => {
 			const playerSelection = 'scissors';
 			const computerSelection = computerPlay();
 			playRound(playerSelection, computerSelection);
-			playerScoreBoard.textContent = `Player = ${playerScore}`;
-			computerScoreBoard.textContent = `Computer = ${compScore}`;
-			message.textContent = `${roundWinner}`;
 		})
 
 
@@ -98,9 +92,6 @@
 				) {
 				roundWinner = 'Player';
 				++playerScore;
-				if (playerScore == 5) {
-					 message.textContent = `Game is Over. Player score is ${playerScore}. Computer score is ${compScore}.`;
-					}
 				}
 			else if (
 				(computerSelection === 'rock' && playerSelection === 'scissors') ||
@@ -109,20 +100,30 @@
 				) {
 				roundWinner = 'Computer';
 				++compScore;
-				if (compScore == 5) {
-					message.textContent = `Game is Over. Player score is ${playerScore}. Computer score is ${compScore}.`;
-					}
 				}
-			else (
-				alert('Unexpected value used. Please try again. ')
-			)
+			finalScore();
 		}
-		
 
-	// removing the function to end game at 5 points
+	// display final score; if player or computer score is equal to 5, declare the winner.
+		function finalScore() {
+			playerScoreBoard.textContent = `Player Score: ${playerScore}`;
+			computerScoreBoard.textContent = `Computer Score: ${compScore}`;
+			message.textContent = `Round Results: ${roundWinner}`;
+
+			if (playerScore === 5) {
+				gameWinner.textContent = "Player has won the game!";
+				gameOver()	
+			} else if (compScore === 5) {
+				gameWinner.textContent = "Computer has won the game!";
+				gameOver()
+			} 
+		}
+
+		// ends the game, making buttons unclickable. 
 		function gameOver() {
-			playerScore === 5 || compScore === 5;
-			return `Game is Over. Player score is ${playerScore}. Computer score is ${compScore}.`;
+  			document.getElementById("rock").disabled = true;
+  			document.getElementById("paper").disabled = true;
+ 		 	document.getElementById("scissors").disabled = true;
 		}
 
 
