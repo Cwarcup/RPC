@@ -7,14 +7,47 @@
 	<title>rock Papper scissors Game - Odin</title>
 </head>
 <body>
+	<div id="container">
+		<button class="btn" id="rock">"Rock"</button>
+		<button class="btn" id="paper">"Paper"</button>
+		<button class="btn" id='scissors'>"Scissors"</button>
+	</div>
+	
+	
+
+
 	<script>
-
-		const playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); //player selects a variable and is converted to lowercase. 
-		const computerSelection = computerPlay(); //computer selection
-
 		let compScore = 0;
 		let playerScore = 0;
 		let roundWinner = ''
+
+		// const playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); //player selects a variable and is converted to lowercase. 
+		// const computerSelection = computerPlay(); //computer selection
+		const container = document.querySelector('#container');
+
+		const btns = document.querySelector(".btn");
+		const rockBtn = document.querySelector("#rock");
+		const paperBtn = document.querySelector("#paper");
+		const scissorBtn = document.querySelector("#scissors");
+
+		rockBtn.addEventListener('click', () => {
+			const playerSelection = 'rock';
+			const computerSelection = computerPlay();
+			playRound(playerSelection, computerSelection);
+		})
+
+		paperBtn.addEventListener('click', () => {
+			const playerSelection = 'paper';
+			const computerSelection = computerPlay();
+			playRound(playerSelection, computerSelection);
+		})
+
+		scissorBtn.addEventListener('click', () => {
+			const playerSelection = 'scissors';
+			const computerSelection = computerPlay();
+			playRound(playerSelection, computerSelection);
+		})
+
 
 		function computerPlay() {
 			let randomNum = Math.floor(Math.random() * 3);
@@ -29,9 +62,13 @@
 			}
 		}
 
-		function playRound() {
-			const playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); //player selects a variable and is converted to lowercase. 
-			const computerSelection = computerPlay(); //computer selection
+
+		function playRound(playerSelection, computerSelection) {
+
+	
+			// const playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); //player selects a variable and is converted to lowercase. 
+			//const computerSelection = computerPlay(); //computer selection
+
 
 			if (playerSelection === computerSelection) {
 				roundWinner = 'Tie'
@@ -66,10 +103,12 @@
 		}
 		
 
+	// removing the function to end game at 5 points
 		function gameOver() {
 			playerScore === 5 || compScore === 5;
 			return `Game is Over. Player score is ${playerScore}. Computer score is ${compScore}.`;
 		}
+
 
 	</script>
 	
