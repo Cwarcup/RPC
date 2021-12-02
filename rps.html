@@ -12,6 +12,12 @@
 		<button class="btn" id="paper">"Paper"</button>
 		<button class="btn" id='scissors'>"Scissors"</button>
 	</div>
+
+	<div id="player-score"></div>
+	
+	<div id="computer-score"></div>
+
+	<div id="message"></div>
 	
 	
 
@@ -19,7 +25,7 @@
 	<script>
 		let compScore = 0;
 		let playerScore = 0;
-		let roundWinner = ''
+		let roundWinner = '';
 
 		// const playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); //player selects a variable and is converted to lowercase. 
 		// const computerSelection = computerPlay(); //computer selection
@@ -30,22 +36,40 @@
 		const paperBtn = document.querySelector("#paper");
 		const scissorBtn = document.querySelector("#scissors");
 
+		const playerScoreBoard = document.querySelector('#player-score');
+		const computerScoreBoard = document.querySelector('#computer-score');
+		const message = document.querySelector('#message');
+
+		//function to add a div to the container everytime the round is played. 
+	
+
+
 		rockBtn.addEventListener('click', () => {
 			const playerSelection = 'rock';
 			const computerSelection = computerPlay();
 			playRound(playerSelection, computerSelection);
+			playerScoreBoard.textContent = `Player = ${playerScore}`;
+			computerScoreBoard.textContent = `Computer = ${compScore}`;
+			message.textContent = `${roundWinner}`;
+	
 		})
 
 		paperBtn.addEventListener('click', () => {
 			const playerSelection = 'paper';
 			const computerSelection = computerPlay();
 			playRound(playerSelection, computerSelection);
+			playerScoreBoard.textContent = `Player = ${playerScore}`;
+			computerScoreBoard.textContent = `Computer = ${compScore}`;
+			message.textContent = `${roundWinner}`;
 		})
 
 		scissorBtn.addEventListener('click', () => {
 			const playerSelection = 'scissors';
 			const computerSelection = computerPlay();
 			playRound(playerSelection, computerSelection);
+			playerScoreBoard.textContent = `Player = ${playerScore}`;
+			computerScoreBoard.textContent = `Computer = ${compScore}`;
+			message.textContent = `${roundWinner}`;
 		})
 
 
@@ -64,14 +88,8 @@
 
 
 		function playRound(playerSelection, computerSelection) {
-
-	
-			// const playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); //player selects a variable and is converted to lowercase. 
-			//const computerSelection = computerPlay(); //computer selection
-
-
 			if (playerSelection === computerSelection) {
-				roundWinner = 'Tie'
+				roundWinner = 'Tie';
 			}
 			else if (
 				(playerSelection === 'rock' && computerSelection === 'scissors') ||
@@ -79,10 +97,9 @@
 				(playerSelection === 'paper' && computerSelection === 'rock') 
 				) {
 				roundWinner = 'Player';
-				playerScore++;
-
+				++playerScore;
 				if (playerScore == 5) {
-					return `Game is Over. Player score is ${playerScore}. Computer score is ${compScore}.`;
+					 message.textContent = `Game is Over. Player score is ${playerScore}. Computer score is ${compScore}.`;
 					}
 				}
 			else if (
@@ -91,15 +108,14 @@
 				(computerSelection === 'paper' && playerSelection === 'rock')
 				) {
 				roundWinner = 'Computer';
-				compScore++;
+				++compScore;
 				if (compScore == 5) {
-					return `Game is Over. Player score is ${playerScore}. Computer score is ${compScore}.`;
+					message.textContent = `Game is Over. Player score is ${playerScore}. Computer score is ${compScore}.`;
 					}
 				}
 			else (
 				alert('Unexpected value used. Please try again. ')
 			)
-
 		}
 		
 
