@@ -20,6 +20,8 @@
 	<div id="message"></div>
 
 	<div id="game-winner"></div>
+
+	<button class="restart">Restart</button> 
 	
 	
 
@@ -29,14 +31,13 @@
 		let playerScore = 0;
 		let roundWinner = '';
 
-		// const playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase(); //player selects a variable and is converted to lowercase. 
-		// const computerSelection = computerPlay(); //computer selection
 		const container = document.querySelector('#container');
 
 		const btns = document.querySelector(".btn");
 		const rockBtn = document.querySelector("#rock");
 		const paperBtn = document.querySelector("#paper");
 		const scissorBtn = document.querySelector("#scissors");
+		const restartBtn = document.querySelector(".restart");
 
 		const playerScoreBoard = document.querySelector('#player-score');
 		const computerScoreBoard = document.querySelector('#computer-score');
@@ -44,10 +45,23 @@
 
 		const gameWinner = document.querySelector('#game-winner');
 
-		//function to add a div to the container everytime the round is played. 
+		
+// restart the game. Make buttons playable once game has ended. 
+		restartBtn.addEventListener('click',  () => {
+			playerScore = 0;
+			compScore = 0;
+			message.textContent = "";
+			playerScoreBoard.textContent = "Player Score: ";
+ 			computerScoreBoard.textContent = "Computer Score: ";
+  			gameWinner.textContent = "";
+  			document.getElementById("rock").disabled = false;
+  			document.getElementById("paper").disabled = false;
+  			document.getElementById("scissors").disabled = false;
+		})
 	
 
-
+//Buttons to perform action when clicked. 
+// Button selects correct playerSeclection, then plays round. 
 		rockBtn.addEventListener('click', () => {
 			const playerSelection = 'rock';
 			const computerSelection = computerPlay();
@@ -66,7 +80,7 @@
 			playRound(playerSelection, computerSelection);
 		})
 
-
+//Computer selects rock, paper or scissors
 		function computerPlay() {
 			let randomNum = Math.floor(Math.random() * 3);
 			switch (randomNum) {
@@ -80,7 +94,8 @@
 			}
 		}
 
-
+// one round is played.
+// increments player and computer score each round.
 		function playRound(playerSelection, computerSelection) {
 			if (playerSelection === computerSelection) {
 				roundWinner = 'Tie';
@@ -104,7 +119,7 @@
 			finalScore();
 		}
 
-	// display final score; if player or computer score is equal to 5, declare the winner.
+// display final score; if player or computer score is equal to 5, declare the winner.
 		function finalScore() {
 			playerScoreBoard.textContent = `Player Score: ${playerScore}`;
 			computerScoreBoard.textContent = `Computer Score: ${compScore}`;
@@ -119,7 +134,7 @@
 			} 
 		}
 
-		// ends the game, making buttons unclickable. 
+// ends the game, making buttons unclickable. 
 		function gameOver() {
   			document.getElementById("rock").disabled = true;
   			document.getElementById("paper").disabled = true;
