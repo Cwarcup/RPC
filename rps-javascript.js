@@ -23,8 +23,8 @@ restartBtn.addEventListener('click',  () => {
 	playerScore = 0;
 	compScore = 0;
 	message.textContent = "";
-	playerScoreBoard.textContent = "Player Score: ";
-	computerScoreBoard.textContent = "Computer Score: ";
+	playerScoreBoard.textContent = "";
+	computerScoreBoard.textContent = "";
 	gameWinner.textContent = "";
 	document.getElementById("rock").disabled = false;
 	document.getElementById("paper").disabled = false;
@@ -93,8 +93,8 @@ function playRound(playerSelection, computerSelection) {
 
 // display final score; if player or computer score is equal to 5, declare the winner.
 function finalScore() {
-	playerScoreBoard.textContent = `Player Score: ${playerScore}`;
-	computerScoreBoard.textContent = `Computer Score: ${compScore}`;
+	playerScoreBoard.textContent = `${playerScore}`;
+	computerScoreBoard.textContent = `${compScore}`;
 	message.textContent = `Round Results: ${roundWinner}`;
 
 	if (playerScore === 5) {

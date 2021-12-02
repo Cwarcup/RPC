@@ -9,21 +9,40 @@
 	<link rel="stylesheet" href="rps_visual.css">
 </head>
 <body>
-	<div id="container">
-		<button class="btn" id="rock">"Rock"</button>
-		<button class="btn" id="paper">"Paper"</button>
-		<button class="btn" id='scissors'>"Scissors"</button>
+	<div class = "header-container">
+		<h1 class = 'header'>Rock Paper Scissors</h1>
+		<h2 class = 'subheader'>Human VS Machine</h2>
+		<h3 class = 'subheader'>First to 5 wins is declared the winner!</h3>
 	</div>
-
-	<div id="player-score">Player Score:</div>
 	
-	<div id="computer-score">Computer Score:</div>
+	<div id="button-container">
+		<button class="btn" id="rock">ROCK</button>
+		<button class="btn" id="paper">PAPER</button>
+		<button class="btn" id='scissors'>SCISSORS</button>
+	</div>
+	<div id="score-container">
+		<p id="player">
+			<div class = "score-count-name">Human</div>
+			<div id="player-score"></div>
+		</p>
+		<p id="machine">
+			<div class = "score-count-name">Machine</div>
+			<div id="computer-score"></div>
+		</p>
+	
+	</div>
 
 	<div id="message"></div>
 
-	<div id="game-winner"></div>
-
-	<button class="restart">Restart</button> 
+	<div class="winner-container">
+		<div id="game-winner"></div>
+	</div>
+	
+	
+	<div class="restart-container">
+		<button class="restart">Restart</button> 
+	</div>
+	
 	
 </body>
 </html>
