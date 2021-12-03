@@ -22,7 +22,7 @@ const gameWinner = document.querySelector('#game-winner');
 restartBtn.addEventListener('click',  () => {
 	playerScore = 0;
 	compScore = 0;
-	message.textContent = "";
+	message.textContent = "Round Results";
 	playerScoreBoard.textContent = "";
 	computerScoreBoard.textContent = "";
 	gameWinner.textContent = "";
@@ -99,10 +99,10 @@ function finalScore() {
 
 	if (playerScore === 5) {
 		gameWinner.textContent = "Player has won the game!";
-		gameOver()	
+		gameOver();
 	} else if (compScore === 5) {
 		gameWinner.textContent = "Computer has won the game!";
-		gameOver()
+		gameOver();
 	} 
 }
 
